@@ -1,0 +1,974 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="itgeekModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="kategoria">
+          <Key>
+            <PropertyRef Name="id_kategoria" />
+          </Key>
+          <Property Name="id_kategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa_kategorii" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="komentarz">
+          <Key>
+            <PropertyRef Name="id_komentarz" />
+          </Key>
+          <Property Name="id_komentarz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="int" Nullable="false" />
+          <Property Name="tresc_komentarza" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="id_projekt" Type="int" />
+        </EntityType>
+        <EntityType Name="ocena_komentarza">
+          <Key>
+            <PropertyRef Name="id_ocena_komentarza" />
+          </Key>
+          <Property Name="id_ocena_komentarza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_komentarz" Type="int" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="int" Nullable="false" />
+          <Property Name="ocena_komentarza" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ocena_podkomentarza">
+          <Key>
+            <PropertyRef Name="id_ocena_podkomentarza" />
+          </Key>
+          <Property Name="id_ocena_podkomentarza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_podkomentarz" Type="int" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="int" Nullable="false" />
+          <Property Name="ocena_podkomentarza" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ocena_projektu">
+          <Key>
+            <PropertyRef Name="id_ocena_projektu" />
+          </Key>
+          <Property Name="id_ocena_projektu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="int" Nullable="false" />
+          <Property Name="id_projekt" Type="int" Nullable="false" />
+          <Property Name="ocena_projektu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pliki">
+          <Key>
+            <PropertyRef Name="id_pliki" />
+          </Key>
+          <Property Name="id_pliki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_projekt" Type="int" Nullable="false" />
+          <Property Name="format_pliku" Type="varchar" MaxLength="45" />
+          <Property Name="nazwa_pliku" Type="varchar" MaxLength="45" />
+          <Property Name="plik" Type="mediumblob" Nullable="false" />
+        </EntityType>
+        <EntityType Name="podkomentarz">
+          <Key>
+            <PropertyRef Name="id_podkomentarz" />
+          </Key>
+          <Property Name="id_podkomentarz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_komentarz" Type="int" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="int" Nullable="false" />
+          <Property Name="tresc_podkomentarza" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pozycja_kategorii">
+          <Key>
+            <PropertyRef Name="id_pozycja_kategorii" />
+          </Key>
+          <Property Name="id_pozycja_kategorii" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_projekt" Type="int" Nullable="false" />
+          <Property Name="id_kategoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="projekt">
+          <Key>
+            <PropertyRef Name="id_projekt" />
+          </Key>
+          <Property Name="id_projekt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="int" Nullable="false" />
+          <Property Name="nazwa_projektu" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="wstep" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="rozwiniecie" Type="varchar" MaxLength="10000" />
+          <Property Name="zakonczenie" Type="varchar" MaxLength="1000" />
+          <Property Name="poziom_ukonczenia" Type="int" Nullable="false" />
+          <Property Name="uwagi_problemy" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="uzytkownik">
+          <Key>
+            <PropertyRef Name="id_uzytkownik" />
+          </Key>
+          <Property Name="id_uzytkownik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="45" />
+          <Property Name="data_urodzenia" Type="date" Nullable="false" />
+          <Property Name="miejscowosc" Type="varchar" MaxLength="45" />
+          <Property Name="wyswietlana_nazwa" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="e-mail" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="haslo" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="uprawnienia" Type="int" />
+        </EntityType>
+        <EntityType Name="wideo">
+          <Key>
+            <PropertyRef Name="id_wideo" />
+          </Key>
+          <Property Name="id_wideo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_projekt" Type="int" Nullable="false" />
+          <Property Name="nazwa_wideo" Type="varchar" MaxLength="45" />
+          <Property Name="format_wideo" Type="varchar" MaxLength="45" />
+          <Property Name="plik_wideo" Type="longblob" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zdjecia">
+          <Key>
+            <PropertyRef Name="id_zdjecia" />
+          </Key>
+          <Property Name="id_zdjecia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_projekt" Type="int" Nullable="false" />
+          <Property Name="nazwa_zdjecia" Type="varchar" MaxLength="45" />
+          <Property Name="Zdjecie" Type="mediumblob" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_komentarz_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="0..1" />
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="komentarz">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_komentarz_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="komentarz">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_komentarza_komentarz1">
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="1" />
+          <End Role="ocena_komentarza" Type="Self.ocena_komentarza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="komentarz">
+              <PropertyRef Name="id_komentarz" />
+            </Principal>
+            <Dependent Role="ocena_komentarza">
+              <PropertyRef Name="id_komentarz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_komentarza_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="ocena_komentarza" Type="Self.ocena_komentarza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="ocena_komentarza">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_podkomentarza_podkomentarz1">
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="1" />
+          <End Role="ocena_podkomentarza" Type="Self.ocena_podkomentarza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="podkomentarz">
+              <PropertyRef Name="id_podkomentarz" />
+            </Principal>
+            <Dependent Role="ocena_podkomentarza">
+              <PropertyRef Name="id_podkomentarz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_podkomentarza_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="ocena_podkomentarza" Type="Self.ocena_podkomentarza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="ocena_podkomentarza">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_projektu_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="ocena_projektu" Type="Self.ocena_projektu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="ocena_projektu">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_projektu_urzytkownik">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="ocena_projektu" Type="Self.ocena_projektu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="ocena_projektu">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pliki_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="pliki" Type="Self.pliki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="pliki">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_podkomentarz_komentarz1">
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="1" />
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="komentarz">
+              <PropertyRef Name="id_komentarz" />
+            </Principal>
+            <Dependent Role="podkomentarz">
+              <PropertyRef Name="id_komentarz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_podkomentarz_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="podkomentarz">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pozycja_kategorii_kategoria1">
+          <End Role="kategoria" Type="Self.kategoria" Multiplicity="1" />
+          <End Role="pozycja_kategorii" Type="Self.pozycja_kategorii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategoria">
+              <PropertyRef Name="id_kategoria" />
+            </Principal>
+            <Dependent Role="pozycja_kategorii">
+              <PropertyRef Name="id_kategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pozycja_kategorii_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="pozycja_kategorii" Type="Self.pozycja_kategorii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="pozycja_kategorii">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_projekt_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="projekt" Type="Self.projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="projekt">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_wideo_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="wideo" Type="Self.wideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="wideo">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_zdjecia_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="zdjecia" Type="Self.zdjecia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="zdjecia">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="itgeekModelStoreContainer">
+          <EntitySet Name="kategoria" EntityType="Self.kategoria" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="komentarz" EntityType="Self.komentarz" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="ocena_komentarza" EntityType="Self.ocena_komentarza" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="ocena_podkomentarza" EntityType="Self.ocena_podkomentarza" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="ocena_projektu" EntityType="Self.ocena_projektu" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="pliki" EntityType="Self.pliki" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="podkomentarz" EntityType="Self.podkomentarz" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="pozycja_kategorii" EntityType="Self.pozycja_kategorii" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="projekt" EntityType="Self.projekt" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="uzytkownik" EntityType="Self.uzytkownik" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="wideo" EntityType="Self.wideo" Schema="itgeek" store:Type="Tables" />
+          <EntitySet Name="zdjecia" EntityType="Self.zdjecia" Schema="itgeek" store:Type="Tables" />
+          <AssociationSet Name="fk_komentarz_projekt1" Association="Self.fk_komentarz_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="komentarz" EntitySet="komentarz" />
+          </AssociationSet>
+          <AssociationSet Name="fk_komentarz_urzytkownik1" Association="Self.fk_komentarz_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="komentarz" EntitySet="komentarz" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_komentarza_komentarz1" Association="Self.fk_ocena_komentarza_komentarz1">
+            <End Role="komentarz" EntitySet="komentarz" />
+            <End Role="ocena_komentarza" EntitySet="ocena_komentarza" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_komentarza_urzytkownik1" Association="Self.fk_ocena_komentarza_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="ocena_komentarza" EntitySet="ocena_komentarza" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_podkomentarza_podkomentarz1" Association="Self.fk_ocena_podkomentarza_podkomentarz1">
+            <End Role="podkomentarz" EntitySet="podkomentarz" />
+            <End Role="ocena_podkomentarza" EntitySet="ocena_podkomentarza" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_podkomentarza_urzytkownik1" Association="Self.fk_ocena_podkomentarza_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="ocena_podkomentarza" EntitySet="ocena_podkomentarza" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_projektu_projekt1" Association="Self.fk_ocena_projektu_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="ocena_projektu" EntitySet="ocena_projektu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_projektu_urzytkownik" Association="Self.fk_ocena_projektu_urzytkownik">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="ocena_projektu" EntitySet="ocena_projektu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pliki_projekt1" Association="Self.fk_pliki_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="pliki" EntitySet="pliki" />
+          </AssociationSet>
+          <AssociationSet Name="fk_podkomentarz_komentarz1" Association="Self.fk_podkomentarz_komentarz1">
+            <End Role="komentarz" EntitySet="komentarz" />
+            <End Role="podkomentarz" EntitySet="podkomentarz" />
+          </AssociationSet>
+          <AssociationSet Name="fk_podkomentarz_urzytkownik1" Association="Self.fk_podkomentarz_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="podkomentarz" EntitySet="podkomentarz" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pozycja_kategorii_kategoria1" Association="Self.fk_pozycja_kategorii_kategoria1">
+            <End Role="kategoria" EntitySet="kategoria" />
+            <End Role="pozycja_kategorii" EntitySet="pozycja_kategorii" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pozycja_kategorii_projekt1" Association="Self.fk_pozycja_kategorii_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="pozycja_kategorii" EntitySet="pozycja_kategorii" />
+          </AssociationSet>
+          <AssociationSet Name="fk_projekt_urzytkownik1" Association="Self.fk_projekt_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="projekt" EntitySet="projekt" />
+          </AssociationSet>
+          <AssociationSet Name="fk_wideo_projekt1" Association="Self.fk_wideo_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="wideo" EntitySet="wideo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_zdjecia_projekt1" Association="Self.fk_zdjecia_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="zdjecia" EntitySet="zdjecia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="itgeekModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="kategoria">
+          <Key>
+            <PropertyRef Name="id_kategoria" />
+          </Key>
+          <Property Name="id_kategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa_kategorii" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="pozycja_kategorii" Relationship="Self.fk_pozycja_kategorii_kategoria1" FromRole="kategoria" ToRole="pozycja_kategorii" />
+        </EntityType>
+        <EntityType Name="komentarz">
+          <Key>
+            <PropertyRef Name="id_komentarz" />
+          </Key>
+          <Property Name="id_komentarz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_uzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="tresc_komentarza" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_projekt" Type="Int32" />
+          <NavigationProperty Name="projekt" Relationship="Self.fk_komentarz_projekt1" FromRole="komentarz" ToRole="projekt" />
+          <NavigationProperty Name="uzytkownik" Relationship="Self.fk_komentarz_urzytkownik1" FromRole="komentarz" ToRole="uzytkownik" />
+          <NavigationProperty Name="ocena_komentarza" Relationship="Self.fk_ocena_komentarza_komentarz1" FromRole="komentarz" ToRole="ocena_komentarza" />
+          <NavigationProperty Name="podkomentarz" Relationship="Self.fk_podkomentarz_komentarz1" FromRole="komentarz" ToRole="podkomentarz" />
+        </EntityType>
+        <EntityType Name="ocena_komentarza">
+          <Key>
+            <PropertyRef Name="id_ocena_komentarza" />
+          </Key>
+          <Property Name="id_ocena_komentarza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_komentarz" Type="Int32" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="ocena_komentarza1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="komentarz" Relationship="Self.fk_ocena_komentarza_komentarz1" FromRole="ocena_komentarza" ToRole="komentarz" />
+          <NavigationProperty Name="uzytkownik" Relationship="Self.fk_ocena_komentarza_urzytkownik1" FromRole="ocena_komentarza" ToRole="uzytkownik" />
+        </EntityType>
+        <EntityType Name="ocena_podkomentarza">
+          <Key>
+            <PropertyRef Name="id_ocena_podkomentarza" />
+          </Key>
+          <Property Name="id_ocena_podkomentarza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_podkomentarz" Type="Int32" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="ocena_podkomentarza1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="podkomentarz" Relationship="Self.fk_ocena_podkomentarza_podkomentarz1" FromRole="ocena_podkomentarza" ToRole="podkomentarz" />
+          <NavigationProperty Name="uzytkownik" Relationship="Self.fk_ocena_podkomentarza_urzytkownik1" FromRole="ocena_podkomentarza" ToRole="uzytkownik" />
+        </EntityType>
+        <EntityType Name="ocena_projektu">
+          <Key>
+            <PropertyRef Name="id_ocena_projektu" />
+          </Key>
+          <Property Name="id_ocena_projektu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_uzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="id_projekt" Type="Int32" Nullable="false" />
+          <Property Name="ocena_projektu1" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="projekt" Relationship="Self.fk_ocena_projektu_projekt1" FromRole="ocena_projektu" ToRole="projekt" />
+          <NavigationProperty Name="uzytkownik" Relationship="Self.fk_ocena_projektu_urzytkownik" FromRole="ocena_projektu" ToRole="uzytkownik" />
+        </EntityType>
+        <EntityType Name="pliki">
+          <Key>
+            <PropertyRef Name="id_pliki" />
+          </Key>
+          <Property Name="id_pliki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_projekt" Type="Int32" Nullable="false" />
+          <Property Name="format_pliku" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nazwa_pliku" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="plik" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="projekt" Relationship="Self.fk_pliki_projekt1" FromRole="pliki" ToRole="projekt" />
+        </EntityType>
+        <EntityType Name="podkomentarz">
+          <Key>
+            <PropertyRef Name="id_podkomentarz" />
+          </Key>
+          <Property Name="id_podkomentarz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_komentarz" Type="Int32" Nullable="false" />
+          <Property Name="id_uzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="tresc_podkomentarza" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="komentarz" Relationship="Self.fk_podkomentarz_komentarz1" FromRole="podkomentarz" ToRole="komentarz" />
+          <NavigationProperty Name="ocena_podkomentarza" Relationship="Self.fk_ocena_podkomentarza_podkomentarz1" FromRole="podkomentarz" ToRole="ocena_podkomentarza" />
+          <NavigationProperty Name="uzytkownik" Relationship="Self.fk_podkomentarz_urzytkownik1" FromRole="podkomentarz" ToRole="uzytkownik" />
+        </EntityType>
+        <EntityType Name="pozycja_kategorii">
+          <Key>
+            <PropertyRef Name="id_pozycja_kategorii" />
+          </Key>
+          <Property Name="id_pozycja_kategorii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_projekt" Type="Int32" Nullable="false" />
+          <Property Name="id_kategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="kategoria" Relationship="Self.fk_pozycja_kategorii_kategoria1" FromRole="pozycja_kategorii" ToRole="kategoria" />
+          <NavigationProperty Name="projekt" Relationship="Self.fk_pozycja_kategorii_projekt1" FromRole="pozycja_kategorii" ToRole="projekt" />
+        </EntityType>
+        <EntityType Name="projekt">
+          <Key>
+            <PropertyRef Name="id_projekt" />
+          </Key>
+          <Property Name="id_projekt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_uzytkownik" Type="Int32" Nullable="false" />
+          <Property Name="nazwa_projektu" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="wstep" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rozwiniecie" Type="String" MaxLength="10000" FixedLength="false" Unicode="false" />
+          <Property Name="zakonczenie" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="poziom_ukonczenia" Type="Int32" Nullable="false" />
+          <Property Name="uwagi_problemy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="komentarz" Relationship="Self.fk_komentarz_projekt1" FromRole="projekt" ToRole="komentarz" />
+          <NavigationProperty Name="ocena_projektu" Relationship="Self.fk_ocena_projektu_projekt1" FromRole="projekt" ToRole="ocena_projektu" />
+          <NavigationProperty Name="pliki" Relationship="Self.fk_pliki_projekt1" FromRole="projekt" ToRole="pliki" />
+          <NavigationProperty Name="pozycja_kategorii" Relationship="Self.fk_pozycja_kategorii_projekt1" FromRole="projekt" ToRole="pozycja_kategorii" />
+          <NavigationProperty Name="uzytkownik" Relationship="Self.fk_projekt_urzytkownik1" FromRole="projekt" ToRole="uzytkownik" />
+          <NavigationProperty Name="wideo" Relationship="Self.fk_wideo_projekt1" FromRole="projekt" ToRole="wideo" />
+          <NavigationProperty Name="zdjecia" Relationship="Self.fk_zdjecia_projekt1" FromRole="projekt" ToRole="zdjecia" />
+        </EntityType>
+        <EntityType Name="uzytkownik">
+          <Key>
+            <PropertyRef Name="id_uzytkownik" />
+          </Key>
+          <Property Name="id_uzytkownik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="data_urodzenia" Type="DateTime" Nullable="false" />
+          <Property Name="miejscowosc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="wyswietlana_nazwa" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="e_mail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="haslo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uprawnienia" Type="Int32" />
+          <NavigationProperty Name="komentarz" Relationship="Self.fk_komentarz_urzytkownik1" FromRole="uzytkownik" ToRole="komentarz" />
+          <NavigationProperty Name="ocena_komentarza" Relationship="Self.fk_ocena_komentarza_urzytkownik1" FromRole="uzytkownik" ToRole="ocena_komentarza" />
+          <NavigationProperty Name="ocena_podkomentarza" Relationship="Self.fk_ocena_podkomentarza_urzytkownik1" FromRole="uzytkownik" ToRole="ocena_podkomentarza" />
+          <NavigationProperty Name="ocena_projektu" Relationship="Self.fk_ocena_projektu_urzytkownik" FromRole="uzytkownik" ToRole="ocena_projektu" />
+          <NavigationProperty Name="podkomentarz" Relationship="Self.fk_podkomentarz_urzytkownik1" FromRole="uzytkownik" ToRole="podkomentarz" />
+          <NavigationProperty Name="projekt" Relationship="Self.fk_projekt_urzytkownik1" FromRole="uzytkownik" ToRole="projekt" />
+        </EntityType>
+        <EntityType Name="wideo">
+          <Key>
+            <PropertyRef Name="id_wideo" />
+          </Key>
+          <Property Name="id_wideo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_projekt" Type="Int32" Nullable="false" />
+          <Property Name="nazwa_wideo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="format_wideo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="plik_wideo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="projekt" Relationship="Self.fk_wideo_projekt1" FromRole="wideo" ToRole="projekt" />
+        </EntityType>
+        <EntityType Name="zdjecia">
+          <Key>
+            <PropertyRef Name="id_zdjecia" />
+          </Key>
+          <Property Name="id_zdjecia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_projekt" Type="Int32" Nullable="false" />
+          <Property Name="nazwa_zdjecia" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Zdjecie" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="projekt" Relationship="Self.fk_zdjecia_projekt1" FromRole="zdjecia" ToRole="projekt" />
+        </EntityType>
+        <Association Name="fk_pozycja_kategorii_kategoria1">
+          <End Role="kategoria" Type="Self.kategoria" Multiplicity="1" />
+          <End Role="pozycja_kategorii" Type="Self.pozycja_kategorii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategoria">
+              <PropertyRef Name="id_kategoria" />
+            </Principal>
+            <Dependent Role="pozycja_kategorii">
+              <PropertyRef Name="id_kategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_komentarz_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="0..1" />
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="komentarz">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_komentarz_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="komentarz">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_komentarza_komentarz1">
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="1" />
+          <End Role="ocena_komentarza" Type="Self.ocena_komentarza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="komentarz">
+              <PropertyRef Name="id_komentarz" />
+            </Principal>
+            <Dependent Role="ocena_komentarza">
+              <PropertyRef Name="id_komentarz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_podkomentarz_komentarz1">
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="1" />
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="komentarz">
+              <PropertyRef Name="id_komentarz" />
+            </Principal>
+            <Dependent Role="podkomentarz">
+              <PropertyRef Name="id_komentarz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_komentarza_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="ocena_komentarza" Type="Self.ocena_komentarza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="ocena_komentarza">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_podkomentarza_podkomentarz1">
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="1" />
+          <End Role="ocena_podkomentarza" Type="Self.ocena_podkomentarza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="podkomentarz">
+              <PropertyRef Name="id_podkomentarz" />
+            </Principal>
+            <Dependent Role="ocena_podkomentarza">
+              <PropertyRef Name="id_podkomentarz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_podkomentarza_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="ocena_podkomentarza" Type="Self.ocena_podkomentarza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="ocena_podkomentarza">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_projektu_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="ocena_projektu" Type="Self.ocena_projektu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="ocena_projektu">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ocena_projektu_urzytkownik">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="ocena_projektu" Type="Self.ocena_projektu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="ocena_projektu">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pliki_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="pliki" Type="Self.pliki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="pliki">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_podkomentarz_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="podkomentarz">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pozycja_kategorii_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="pozycja_kategorii" Type="Self.pozycja_kategorii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="pozycja_kategorii">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_projekt_urzytkownik1">
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
+          <End Role="projekt" Type="Self.projekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownik">
+              <PropertyRef Name="id_uzytkownik" />
+            </Principal>
+            <Dependent Role="projekt">
+              <PropertyRef Name="id_uzytkownik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_wideo_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="wideo" Type="Self.wideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="wideo">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_zdjecia_projekt1">
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
+          <End Role="zdjecia" Type="Self.zdjecia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projekt">
+              <PropertyRef Name="id_projekt" />
+            </Principal>
+            <Dependent Role="zdjecia">
+              <PropertyRef Name="id_projekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="itgeekEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="kategoria" EntityType="Self.kategoria" />
+          <EntitySet Name="komentarz" EntityType="Self.komentarz" />
+          <EntitySet Name="ocena_komentarza" EntityType="Self.ocena_komentarza" />
+          <EntitySet Name="ocena_podkomentarza" EntityType="Self.ocena_podkomentarza" />
+          <EntitySet Name="ocena_projektu" EntityType="Self.ocena_projektu" />
+          <EntitySet Name="pliki" EntityType="Self.pliki" />
+          <EntitySet Name="podkomentarz" EntityType="Self.podkomentarz" />
+          <EntitySet Name="pozycja_kategorii" EntityType="Self.pozycja_kategorii" />
+          <EntitySet Name="projekt" EntityType="Self.projekt" />
+          <EntitySet Name="uzytkownik" EntityType="Self.uzytkownik" />
+          <EntitySet Name="wideo" EntityType="Self.wideo" />
+          <EntitySet Name="zdjecia" EntityType="Self.zdjecia" />
+          <AssociationSet Name="fk_pozycja_kategorii_kategoria1" Association="Self.fk_pozycja_kategorii_kategoria1">
+            <End Role="kategoria" EntitySet="kategoria" />
+            <End Role="pozycja_kategorii" EntitySet="pozycja_kategorii" />
+          </AssociationSet>
+          <AssociationSet Name="fk_komentarz_projekt1" Association="Self.fk_komentarz_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="komentarz" EntitySet="komentarz" />
+          </AssociationSet>
+          <AssociationSet Name="fk_komentarz_urzytkownik1" Association="Self.fk_komentarz_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="komentarz" EntitySet="komentarz" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_komentarza_komentarz1" Association="Self.fk_ocena_komentarza_komentarz1">
+            <End Role="komentarz" EntitySet="komentarz" />
+            <End Role="ocena_komentarza" EntitySet="ocena_komentarza" />
+          </AssociationSet>
+          <AssociationSet Name="fk_podkomentarz_komentarz1" Association="Self.fk_podkomentarz_komentarz1">
+            <End Role="komentarz" EntitySet="komentarz" />
+            <End Role="podkomentarz" EntitySet="podkomentarz" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_komentarza_urzytkownik1" Association="Self.fk_ocena_komentarza_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="ocena_komentarza" EntitySet="ocena_komentarza" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_podkomentarza_podkomentarz1" Association="Self.fk_ocena_podkomentarza_podkomentarz1">
+            <End Role="podkomentarz" EntitySet="podkomentarz" />
+            <End Role="ocena_podkomentarza" EntitySet="ocena_podkomentarza" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_podkomentarza_urzytkownik1" Association="Self.fk_ocena_podkomentarza_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="ocena_podkomentarza" EntitySet="ocena_podkomentarza" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_projektu_projekt1" Association="Self.fk_ocena_projektu_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="ocena_projektu" EntitySet="ocena_projektu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ocena_projektu_urzytkownik" Association="Self.fk_ocena_projektu_urzytkownik">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="ocena_projektu" EntitySet="ocena_projektu" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pliki_projekt1" Association="Self.fk_pliki_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="pliki" EntitySet="pliki" />
+          </AssociationSet>
+          <AssociationSet Name="fk_podkomentarz_urzytkownik1" Association="Self.fk_podkomentarz_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="podkomentarz" EntitySet="podkomentarz" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pozycja_kategorii_projekt1" Association="Self.fk_pozycja_kategorii_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="pozycja_kategorii" EntitySet="pozycja_kategorii" />
+          </AssociationSet>
+          <AssociationSet Name="fk_projekt_urzytkownik1" Association="Self.fk_projekt_urzytkownik1">
+            <End Role="uzytkownik" EntitySet="uzytkownik" />
+            <End Role="projekt" EntitySet="projekt" />
+          </AssociationSet>
+          <AssociationSet Name="fk_wideo_projekt1" Association="Self.fk_wideo_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="wideo" EntitySet="wideo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_zdjecia_projekt1" Association="Self.fk_zdjecia_projekt1">
+            <End Role="projekt" EntitySet="projekt" />
+            <End Role="zdjecia" EntitySet="zdjecia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="itgeekModelStoreContainer" CdmEntityContainer="itgeekEntities3">
+          <EntitySetMapping Name="kategoria">
+            <EntityTypeMapping TypeName="itgeekModel.kategoria">
+              <MappingFragment StoreEntitySet="kategoria">
+                <ScalarProperty Name="id_kategoria" ColumnName="id_kategoria" />
+                <ScalarProperty Name="nazwa_kategorii" ColumnName="nazwa_kategorii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="komentarz">
+            <EntityTypeMapping TypeName="itgeekModel.komentarz">
+              <MappingFragment StoreEntitySet="komentarz">
+                <ScalarProperty Name="id_komentarz" ColumnName="id_komentarz" />
+                <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+                <ScalarProperty Name="tresc_komentarza" ColumnName="tresc_komentarza" />
+                <ScalarProperty Name="id_projekt" ColumnName="id_projekt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ocena_komentarza">
+            <EntityTypeMapping TypeName="itgeekModel.ocena_komentarza">
+              <MappingFragment StoreEntitySet="ocena_komentarza">
+                <ScalarProperty Name="id_ocena_komentarza" ColumnName="id_ocena_komentarza" />
+                <ScalarProperty Name="id_komentarz" ColumnName="id_komentarz" />
+                <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+                <ScalarProperty Name="ocena_komentarza1" ColumnName="ocena_komentarza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ocena_podkomentarza">
+            <EntityTypeMapping TypeName="itgeekModel.ocena_podkomentarza">
+              <MappingFragment StoreEntitySet="ocena_podkomentarza">
+                <ScalarProperty Name="id_ocena_podkomentarza" ColumnName="id_ocena_podkomentarza" />
+                <ScalarProperty Name="id_podkomentarz" ColumnName="id_podkomentarz" />
+                <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+                <ScalarProperty Name="ocena_podkomentarza1" ColumnName="ocena_podkomentarza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ocena_projektu">
+            <EntityTypeMapping TypeName="itgeekModel.ocena_projektu">
+              <MappingFragment StoreEntitySet="ocena_projektu">
+                <ScalarProperty Name="id_ocena_projektu" ColumnName="id_ocena_projektu" />
+                <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+                <ScalarProperty Name="id_projekt" ColumnName="id_projekt" />
+                <ScalarProperty Name="ocena_projektu1" ColumnName="ocena_projektu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pliki">
+            <EntityTypeMapping TypeName="itgeekModel.pliki">
+              <MappingFragment StoreEntitySet="pliki">
+                <ScalarProperty Name="id_pliki" ColumnName="id_pliki" />
+                <ScalarProperty Name="id_projekt" ColumnName="id_projekt" />
+                <ScalarProperty Name="format_pliku" ColumnName="format_pliku" />
+                <ScalarProperty Name="nazwa_pliku" ColumnName="nazwa_pliku" />
+                <ScalarProperty Name="plik" ColumnName="plik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="podkomentarz">
+            <EntityTypeMapping TypeName="itgeekModel.podkomentarz">
+              <MappingFragment StoreEntitySet="podkomentarz">
+                <ScalarProperty Name="id_podkomentarz" ColumnName="id_podkomentarz" />
+                <ScalarProperty Name="id_komentarz" ColumnName="id_komentarz" />
+                <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+                <ScalarProperty Name="tresc_podkomentarza" ColumnName="tresc_podkomentarza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pozycja_kategorii">
+            <EntityTypeMapping TypeName="itgeekModel.pozycja_kategorii">
+              <MappingFragment StoreEntitySet="pozycja_kategorii">
+                <ScalarProperty Name="id_pozycja_kategorii" ColumnName="id_pozycja_kategorii" />
+                <ScalarProperty Name="id_projekt" ColumnName="id_projekt" />
+                <ScalarProperty Name="id_kategoria" ColumnName="id_kategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projekt">
+            <EntityTypeMapping TypeName="itgeekModel.projekt">
+              <MappingFragment StoreEntitySet="projekt">
+                <ScalarProperty Name="id_projekt" ColumnName="id_projekt" />
+                <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+                <ScalarProperty Name="nazwa_projektu" ColumnName="nazwa_projektu" />
+                <ScalarProperty Name="wstep" ColumnName="wstep" />
+                <ScalarProperty Name="rozwiniecie" ColumnName="rozwiniecie" />
+                <ScalarProperty Name="zakonczenie" ColumnName="zakonczenie" />
+                <ScalarProperty Name="poziom_ukonczenia" ColumnName="poziom_ukonczenia" />
+                <ScalarProperty Name="uwagi_problemy" ColumnName="uwagi_problemy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uzytkownik">
+            <EntityTypeMapping TypeName="itgeekModel.uzytkownik">
+              <MappingFragment StoreEntitySet="uzytkownik">
+                <ScalarProperty Name="id_uzytkownik" ColumnName="id_uzytkownik" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="data_urodzenia" ColumnName="data_urodzenia" />
+                <ScalarProperty Name="miejscowosc" ColumnName="miejscowosc" />
+                <ScalarProperty Name="wyswietlana_nazwa" ColumnName="wyswietlana_nazwa" />
+                <ScalarProperty Name="e_mail" ColumnName="e-mail" />
+                <ScalarProperty Name="haslo" ColumnName="haslo" />
+                <ScalarProperty Name="uprawnienia" ColumnName="uprawnienia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wideo">
+            <EntityTypeMapping TypeName="itgeekModel.wideo">
+              <MappingFragment StoreEntitySet="wideo">
+                <ScalarProperty Name="id_wideo" ColumnName="id_wideo" />
+                <ScalarProperty Name="id_projekt" ColumnName="id_projekt" />
+                <ScalarProperty Name="nazwa_wideo" ColumnName="nazwa_wideo" />
+                <ScalarProperty Name="format_wideo" ColumnName="format_wideo" />
+                <ScalarProperty Name="plik_wideo" ColumnName="plik_wideo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zdjecia">
+            <EntityTypeMapping TypeName="itgeekModel.zdjecia">
+              <MappingFragment StoreEntitySet="zdjecia">
+                <ScalarProperty Name="id_zdjecia" ColumnName="id_zdjecia" />
+                <ScalarProperty Name="id_projekt" ColumnName="id_projekt" />
+                <ScalarProperty Name="nazwa_zdjecia" ColumnName="nazwa_zdjecia" />
+                <ScalarProperty Name="Zdjecie" ColumnName="Zdjecie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

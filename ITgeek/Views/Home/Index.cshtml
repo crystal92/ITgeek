@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ITgeek.uzytkownik>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@ViewBag.Title</h2>
+        <h4>@ViewBag.Message</h4>
+    </div>
+
+
+    <div id="tabela">
+        <h3>Lista kont:</h3>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.imie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nazwisko)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.miejscowosc)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nazwisko)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.miejscowosc)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id_uzytkownik }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id_uzytkownik }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id_uzytkownik })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+</div>
+
+
+
+
+
+
+
+</div>

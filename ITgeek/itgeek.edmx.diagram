@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b004c01367e46c2aeff84df227da13f" Name="Diagram1">
+        <EntityTypeShape EntityType="itgeekModel.kategoria" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.komentarz" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.ocena_komentarza" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.ocena_podkomentarza" Width="1.5" PointX="9.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.ocena_projektu" Width="1.5" PointX="8.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.pliki" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.podkomentarz" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.pozycja_kategorii" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.projekt" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.uzytkownik" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.wideo" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.zdjecia" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
+        <AssociationConnector Association="itgeekModel.fk_pozycja_kategorii_kategoria1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_komentarz_projekt1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_komentarz_urzytkownik1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_ocena_komentarza_komentarz1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_podkomentarz_komentarz1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_ocena_komentarza_urzytkownik1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_ocena_podkomentarza_podkomentarz1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_ocena_podkomentarza_urzytkownik1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_ocena_projektu_projekt1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_ocena_projektu_urzytkownik" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_pliki_projekt1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_podkomentarz_urzytkownik1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_pozycja_kategorii_projekt1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_projekt_urzytkownik1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_wideo_projekt1" ManuallyRouted="false" />
+        <AssociationConnector Association="itgeekModel.fk_zdjecia_projekt1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
