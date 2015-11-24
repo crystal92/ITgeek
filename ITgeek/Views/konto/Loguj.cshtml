@@ -1,0 +1,45 @@
+﻿@model ITgeek.Models.LogujViewModel
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+<h2>Loguj</h2>
+
+@using (Html.BeginForm("Loguj", "konto", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    if (@ViewBag.Message != null)
+    {
+
+        <div style="border:1px solid red"    >
+            @ViewBag.Message
+
+        </div>
+    }
+    <table>
+        <tr>
+            <td>@Html.LabelFor(a=>a.email)</td>
+            <td>@Html.TextBoxFor(a=>a.email)</td>
+            <td>@Html.ValidationMessageFor(a => a.email)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.haslo)</td>
+            <td>@Html.PasswordFor(a => a.haslo)</td>
+            <td>@Html.ValidationMessageFor(a => a.haslo)</td>
+        </tr>
+
+        <tr>
+            <td>
+                <input type="submit" value="Loguj"/>
+            </td>
+        <td>
+            </td>
+        </tr>
+
+</table>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

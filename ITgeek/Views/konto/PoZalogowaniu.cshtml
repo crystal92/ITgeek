@@ -1,0 +1,15 @@
+﻿@model ITgeek.uzytkownik
+
+@{
+    ViewBag.Title = "PoZalogowaniu";
+}
+
+<h2>Po Zalogowaniu</h2>
+
+@if (Session["wyswietlana_nazwa"] != null)
+{
+    <text>
+        Witaj @Session["wyswietlana_nazwa"].ToString()
+    </text>
+
+}
