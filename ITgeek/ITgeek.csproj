@@ -299,6 +299,8 @@
     <Content Include="Views\konto\Edit.cshtml" />
     <Content Include="Views\konto\Index.cshtml" />
     <Content Include="Views\konto\Rejestracja.cshtml" />
+    <Content Include="Views\konto\Loguj.cshtml" />
+    <Content Include="Views\konto\PoZalogowaniu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

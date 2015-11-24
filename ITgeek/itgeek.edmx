@@ -93,12 +93,12 @@
             <PropertyRef Name="id_uzytkownik" />
           </Key>
           <Property Name="id_uzytkownik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="imie" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="45" />
           <Property Name="nazwisko" Type="varchar" MaxLength="45" />
-          <Property Name="data_urodzenia" Type="date" Nullable="false" />
+          <Property Name="data_urodzenia" Type="date" />
           <Property Name="miejscowosc" Type="varchar" MaxLength="45" />
           <Property Name="wyswietlana_nazwa" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="e-mail" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="haslo" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="uprawnienia" Type="int" />
         </EntityType>
@@ -508,12 +508,12 @@
             <PropertyRef Name="id_uzytkownik" />
           </Key>
           <Property Name="id_uzytkownik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="imie" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="nazwisko" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="data_urodzenia" Type="DateTime" Nullable="false" />
+          <Property Name="data_urodzenia" Type="DateTime" />
           <Property Name="miejscowosc" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="wyswietlana_nazwa" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="e_mail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="haslo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="uprawnienia" Type="Int32" />
           <NavigationProperty Name="komentarz" Relationship="Self.fk_komentarz_urzytkownik1" FromRole="uzytkownik" ToRole="komentarz" />
@@ -736,7 +736,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="itgeekEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="itgeekEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="kategoria" EntityType="Self.kategoria" />
           <EntitySet Name="komentarz" EntityType="Self.komentarz" />
           <EntitySet Name="ocena_komentarza" EntityType="Self.ocena_komentarza" />
@@ -819,7 +819,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="itgeekModelStoreContainer" CdmEntityContainer="itgeekEntities3">
+        <EntityContainerMapping StorageEntityContainer="itgeekModelStoreContainer" CdmEntityContainer="itgeekEntities4">
           <EntitySetMapping Name="kategoria">
             <EntityTypeMapping TypeName="itgeekModel.kategoria">
               <MappingFragment StoreEntitySet="kategoria">
@@ -921,7 +921,7 @@
                 <ScalarProperty Name="data_urodzenia" ColumnName="data_urodzenia" />
                 <ScalarProperty Name="miejscowosc" ColumnName="miejscowosc" />
                 <ScalarProperty Name="wyswietlana_nazwa" ColumnName="wyswietlana_nazwa" />
-                <ScalarProperty Name="e_mail" ColumnName="e-mail" />
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="haslo" ColumnName="haslo" />
                 <ScalarProperty Name="uprawnienia" ColumnName="uprawnienia" />
               </MappingFragment>

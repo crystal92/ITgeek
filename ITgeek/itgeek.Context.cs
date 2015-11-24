@@ -13,10 +13,10 @@ namespace ITgeek
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class itgeekEntities3 : DbContext
+    public partial class itgeekEntities4 : DbContext
     {
-        public itgeekEntities3()
-            : base("name=itgeekEntities3")
+        public itgeekEntities4()
+            : base("name=itgeekEntities4")
         {
         }
     

@@ -11,7 +11,6 @@ namespace ITgeek
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class uzytkownik
     {
@@ -26,21 +25,13 @@ namespace ITgeek
         }
     
         public int id_uzytkownik { get; set; }
-        
         public string imie { get; set; }
-
         public string nazwisko { get; set; }
-        public System.DateTime data_urodzenia { get; set; }
+        public Nullable<System.DateTime> data_urodzenia { get; set; }
         public string miejscowosc { get; set; }
-        [Required(ErrorMessage="* Nazwa U¿ytkownika jest wymagana")]
         public string wyswietlana_nazwa { get; set; }
-        [Required(ErrorMessage="* Email jest wymagany istnieje")]
-        [RegularExpression(@"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",ErrorMessage="* niepoprawny adres e-mail")]
-        public string e_mail { get; set; }
-
-        [Required(ErrorMessage="*Has³o jest wymagane")]
+        public string email { get; set; }
         public string haslo { get; set; }
-
         public Nullable<int> uprawnienia { get; set; }
     
         public virtual ICollection<komentarz> komentarz { get; set; }

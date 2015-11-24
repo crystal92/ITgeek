@@ -7,22 +7,28 @@
     </div>
 
 
-    <div id="tabela">
+    <div class="col-md-4">
         <h3>Lista kont:</h3>
 
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.imie)
+                    Imię
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.nazwisko)
+                    Nazwisko
                 </th>
+                <th>
+                    Nazwa
+                </th>
+                <th>
+                   E-mail
 
-                <th>
-                    @Html.DisplayNameFor(model => model.miejscowosc)
                 </th>
-                <th></th>
+                <th>
+                   Hasło
+                </th>
+                
             </tr>
 
             @foreach (var item in Model)
@@ -35,20 +41,30 @@
                         @Html.DisplayFor(modelItem => item.nazwisko)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.miejscowosc)
+                        @Html.DisplayFor(modelItem => item.wyswietlana_nazwa)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id_uzytkownik }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id_uzytkownik }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id_uzytkownik })
+                        @Html.DisplayFor(modelItem => item.email)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.haslo)
+                    </td>
+                    <!--
+                   <td>
+                     @Html.ActionLink("Edit", "Edit", new { id = item.id_uzytkownik }) |
+                     @Html.ActionLink("Details", "Details", new { id = item.id_uzytkownik }) |
+                     @Html.ActionLink("Delete", "Delete", new { id = item.id_uzytkownik })
+                 </td>
+
+
+                -->
                 </tr>
             }
 
         </table>
 
 
-</div>
+    </div>
 
 
 
