@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using System;
 
 
 
@@ -29,6 +29,44 @@ namespace ITgeek.Models
             [Compare("haslo", ErrorMessage = "Hasła muszą być takie same")]
             public string powtorz_haslo { get; set; }
         }
+
+       public class EdycjaKontaUzytkownika
+       {
+           [Required]
+           [Display(Name = "Imię")]
+           public string imie { get; set; }
+
+           [Required]
+           [Display(Name = "Nazwisko")]
+           public string nazwisko { get; set; }
+
+           [Required]
+           [Display(Name = "E-mail")]
+           public string email { get; set; }
+
+           [Required]
+           [Display(Name = "Użytkownik")]
+           public string wyswietlana_nazwa { get; set; }
+
+           [Required]
+           [Display(Name = "Data urodzenia")]
+           [DataType(DataType.Date)]
+           [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+           public DateTime? data_urodzenia { get; set; }
+
+           [Required]
+           [Display(Name = "Miejścowość")]
+           public string miejscowosc { get; set; }
+
+           [Required]
+           [DataType(DataType.Password)]
+           [Display(Name = "Hasło")]
+           public string haslo { get; set; }
+
+           [Required]
+           [Display(Name = "Uprawnienia")]
+           public string uprawnienia { get; set; }
+       }
 
        public class LogujViewModel
        {

@@ -98,13 +98,52 @@ namespace ITgeek.Controllers
                     ViewBag.Message = "Podane konto już istnieje!";
                     
                 }
-               
 
-               
             }
              
             return View(u);
         }
+
+        public ActionResult Edycja()
+        {
+
+            string nazwauzytkownika = Session["wyswietlana_nazwa"].ToString();
+            uzytkownik user = db.uzytkownik.FirstOrDefault(u => u.wyswietlana_nazwa.Equals(nazwauzytkownika));
+            EdycjaKontaUzytkownika model = new EdycjaKontaUzytkownika();
+            model.imie = user.imie;
+            model.nazwisko = user.nazwisko;
+            model.data_urodzenia = user.data_urodzenia;
+            model.miejscowosc = user.miejscowosc;
+            model.email = user.email;
+            model.wyswietlana_nazwa = user.wyswietlana_nazwa;
+            model.haslo = user.haslo;
+            model.uprawnienia = user.uprawnienia.ToString();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edycja(EdycjaKontaUzytkownika profiluzytkownika)
+        {
+            if (ModelState.IsValid)
+            {
+                string nazwauzytkownika = Session["wyswietlana_nazwa"].ToString();
+                uzytkownik user = db.uzytkownik.FirstOrDefault(u => u.wyswietlana_nazwa.Equals(nazwauzytkownika));
+                user.imie = profiluzytkownika.imie;
+                user.nazwisko = profiluzytkownika.nazwisko;
+                user.data_urodzenia = profiluzytkownika.data_urodzenia;
+                user.miejscowosc = profiluzytkownika.miejscowosc;
+                user.email = profiluzytkownika.email;
+                user.wyswietlana_nazwa = profiluzytkownika.wyswietlana_nazwa;
+                user.haslo = profiluzytkownika.haslo;
+                user.uprawnienia = Int32.Parse(profiluzytkownika.uprawnienia);
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                Session["wyswietlana_nazwa"] = user.wyswietlana_nazwa.ToString();
+                return RedirectToAction("Index", "Home");
+            }
+            return View(profiluzytkownika);
+        }
+
         
         [HttpPost]
         public JsonResult czy_istnieje(string email)

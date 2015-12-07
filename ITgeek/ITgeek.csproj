@@ -301,6 +301,7 @@
     <Content Include="Views\konto\Rejestracja.cshtml" />
     <Content Include="Views\konto\Loguj.cshtml" />
     <Content Include="Views\konto\PoZalogowaniu.cshtml" />
+    <Content Include="Views\konto\Edycja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

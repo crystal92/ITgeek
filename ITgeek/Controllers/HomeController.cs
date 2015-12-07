@@ -19,8 +19,6 @@ namespace ITgeek.Controllers
         {
             ViewBag.Title = "Strona Główna";
             ViewBag.Message = "Krótki opis strony głównej";
-
-            
             return View(db.uzytkownik.ToList());
             
         }
