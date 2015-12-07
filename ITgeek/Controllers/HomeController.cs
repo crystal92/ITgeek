@@ -15,14 +15,27 @@ namespace ITgeek.Controllers
 
         private itgeekEntities4 db = new itgeekEntities4();
 
-        public ActionResult Index()
+        public ActionResult Index(uzytkownik u)
         {
             ViewBag.Title = "Strona Główna";
             ViewBag.Message = "Krótki opis strony głównej";
 
-
-
+            if (Session["id"] != null)
+            {
+                   var QUERY = "SELECT * FROM UZYTKOWNIK";
+                    var data = db.Database.SqlQuery(QUERY);
+    
+                    var v = db.uzytkownik.SingleOrDefault(u => u.id_uzytkownik == 1);
+                    return View(v);
+                //retyujkiolkp
+                
+                         }
+            else
+            {
+                return View(db.uzytkownik.ToList());
+            }
             return View(db.uzytkownik.ToList());
+            
         }
 
         public ActionResult Strona1()
