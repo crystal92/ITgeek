@@ -1,0 +1,84 @@
+﻿@model ITgeek.projekt
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>projekt</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.id_uzytkownik, "id_uzytkownik", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("id_uzytkownik", String.Empty)
+                @Html.ValidationMessageFor(model => model.id_uzytkownik)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nazwa_projektu, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nazwa_projektu)
+                @Html.ValidationMessageFor(model => model.nazwa_projektu)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.wstep, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.wstep)
+                @Html.ValidationMessageFor(model => model.wstep)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rozwiniecie, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.rozwiniecie)
+                @Html.ValidationMessageFor(model => model.rozwiniecie)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.zakonczenie, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.zakonczenie)
+                @Html.ValidationMessageFor(model => model.zakonczenie)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.poziom_ukonczenia, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.poziom_ukonczenia)
+                @Html.ValidationMessageFor(model => model.poziom_ukonczenia)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.uwagi_problemy, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.uwagi_problemy)
+                @Html.ValidationMessageFor(model => model.uwagi_problemy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

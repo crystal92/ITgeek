@@ -3,98 +3,98 @@
 
 
 <div class="row">
-
+    
     <div class="col-md-4">
         <h2>@ViewBag.Title</h2>
         <h4>@ViewBag.Message</h4>
     </div>
-    <h3>Twoje dane:</h3>
+        <h3>Twoje dane:</h3>
 
-    <table class="table">
-        @using (Html.BeginForm())
-        {
+        <table class="table">
+            @using (Html.BeginForm())
+            {
 
-            <tr>
-                <th>
-                    Imię
-                </th>
-                <td>
-                    @Html.EditorFor(model => model.imie)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Nazwisko
-                </th>
-                <td>
-                    @Html.EditorFor(model => model.nazwisko)
+                <tr>
+                    <th>
+                        Imię
+                    </th>
+                    <td>
+                        @Html.EditorFor(model => model.imie)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Nazwisko
+                    </th>
+                    <td>
+                        @Html.EditorFor(model => model.nazwisko)
 
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Data urodzenia
-                </th>
-                <td>
-                    @Html.EditorFor(model => model.data_urodzenia)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Miejscowość
-                </th>
-                <td>
-                    @Html.EditorFor(model => model.miejscowosc)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Nazwa użytkownika
-                </th>
-                <td>
-                    @Html.EditorFor(model => model.wyswietlana_nazwa)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Data urodzenia
+                    </th>
+                    <td>
+                        @Html.EditorFor(model => model.data_urodzenia)
+                    </td>
+                </tr>   
+                <tr>
+                    <th>
+                        Miejscowość
+                    </th>
+                    <td>
+                        @Html.EditorFor(model => model.miejscowosc)
+                    </td>        
+                </tr>        
+                <tr>
+                    <th>
+                        Nazwa użytkownika
+                    </th>
+                    <td>
+                        @Html.EditorFor(model => model.wyswietlana_nazwa)
 
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    E-mail
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        E-mail
 
-                </th>
-                <td>
-                    @Html.EditorFor(model => model.email)
+                    </th>
+                    <td>
+                        @Html.EditorFor(model => model.email)
 
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Nowe hasło
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Nowe hasło
 
-                </th>
-                <td>
-                    @Html.EditorFor(model => model.haslo)
+                    </th>
+                    <td>
+                        @Html.EditorFor(model => model.haslo)
 
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Uprawnienia
-                </th>
-                <td>
-                    @Html.EditorFor(model => model.uprawnienia)
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Zapisz zmiany
-                </th>
-                <td>
-                    <input type="submit" value="Zapisz" />
-                </td>
-            </tr>
-        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Uprawnienia
+                    </th>
+                    <td>
+                        @Html.EditorFor(model => model.uprawnienia)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Zapisz zmiany
+                    </th>
+                    <td>
+                        <input type="submit" value="Zapisz" />
+                    </td>
+                </tr>
+            }
 
-    </table>
+        </table>
 
 
-</div>
+    </div>

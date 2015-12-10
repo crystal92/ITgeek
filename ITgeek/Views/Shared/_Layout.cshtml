@@ -23,7 +23,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Strona1" ? "active" : "")">@Html.ActionLink("Strona 1", "Strona1", "Home")</li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Napisz projekt" ? "active" : "")">@Html.ActionLink("Napisz projekt", "Index", "Projekty")</li>
                     <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Strona2" ? "active" : "")">@Html.ActionLink("Strona 2", "Strona2", "Home")</li>
                     <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contact" ? "active" : "")">@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                 </ul>

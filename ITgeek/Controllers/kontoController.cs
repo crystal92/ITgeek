@@ -59,25 +59,25 @@ namespace ITgeek.Controllers
                 return RedirectToAction("Index");
             }
 
-           // return View();
+            // return View();
         }
 
-        
+
         // GET: /konto/Rejestracja
         public ActionResult Rejestracja()
         {
             return View();
         }
-        
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Rejestracja(uzytkownik u)
         {
-            
+
             if (ModelState.IsValid)
             {
-                var v = db.uzytkownik.Where(m=>m.email.Equals(u.email)).FirstOrDefault();
+                var v = db.uzytkownik.Where(m => m.email.Equals(u.email)).FirstOrDefault();
                 if (v == null)
                 {
 
@@ -92,15 +92,15 @@ namespace ITgeek.Controllers
                 }
                 else
                 {
-                    
+
                     u = null;
                     ViewBag.kolor = 0xff;
                     ViewBag.Message = "Podane konto już istnieje!";
-                    
+
                 }
 
             }
-             
+
             return View(u);
         }
 
@@ -144,11 +144,11 @@ namespace ITgeek.Controllers
             return View(profiluzytkownika);
         }
 
-        
+
         [HttpPost]
         public JsonResult czy_istnieje(string email)
         {
-                     
+
 
             var user = Membership.GetUser(email);
 
@@ -158,8 +158,8 @@ namespace ITgeek.Controllers
 
         /*
 
-      
-        
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -168,17 +168,17 @@ namespace ITgeek.Controllers
 
             if (ModelState.IsValid)
             {
-                
+
                 db.uzytkownik.Add(uzytkownik);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-                
+
             }
-      
+
 
             return View(uzytkownik);
         }
-        
+
 
 
 
@@ -212,7 +212,11 @@ namespace ITgeek.Controllers
 /*
         // POST: /konto/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see
+
+Implementing Basic CRUD Functionality
+go.microsoft.com/f...
+.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="id_uzytkownik,imie,nazwisko,data_urodzenia,miejscowosc,wyswietlana_nazwa,e_mail,haslo,uprawnienia")] uzytkownik uzytkownik)
@@ -226,7 +230,7 @@ namespace ITgeek.Controllers
 
             return View(uzytkownik);
         }
-        
+
         // GET: /konto/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -244,7 +248,11 @@ namespace ITgeek.Controllers
 
         // POST: /konto/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more details see
+
+Implementing Basic CRUD Functionality
+go.microsoft.com/f...
+.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="id_uzytkownik,imie,nazwisko,data_urodzenia,miejscowosc,wyswietlana_nazwa,e_mail,haslo,uprawnienia")] uzytkownik uzytkownik)

@@ -55,7 +55,7 @@ namespace ITgeek.Models
            public DateTime? data_urodzenia { get; set; }
 
            [Required]
-           [Display(Name = "Miejścowość")]
+           [Display(Name = "Miejscowość")]
            public string miejscowosc { get; set; }
 
            [Required]
@@ -82,4 +82,6 @@ namespace ITgeek.Models
            public string haslo { get; set; }
 
        }
+
+               
     }

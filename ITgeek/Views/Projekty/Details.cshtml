@@ -1,0 +1,74 @@
+﻿@model ITgeek.projekt
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>projekt</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwa_projektu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazwa_projektu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wstep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wstep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rozwiniecie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rozwiniecie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.zakonczenie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zakonczenie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poziom_ukonczenia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poziom_ukonczenia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uwagi_problemy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uwagi_problemy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uzytkownik.imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uzytkownik.imie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_projekt }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

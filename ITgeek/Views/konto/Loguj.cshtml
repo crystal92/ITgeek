@@ -11,6 +11,15 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     
+    if (@ViewBag.komunikat != null)
+    {
+
+        <div style="border:1px solid red"    >
+            @ViewBag.komunikat
+
+        </div>
+    }
+    
     if (@ViewBag.Message != null)
     {
 
