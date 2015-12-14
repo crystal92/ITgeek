@@ -2,27 +2,17 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Web.Mvc;
-
+using System.Collections.Generic;
+using ITgeek.Models;
 
 namespace ITgeek.Models
-
 {
-    
-    public class DodajProjektViewModel
+    public class Projekt
     {
-        
-
-
-        //public int id_projekt { get; set; }
-        //public int id_uzytkownik { get; set; }
-        //public string wstep { get; set; }
-        //public int poziom_ukonczenia { get; set; }
-        //public string uwagi_problemy { get; set; }
- 
-        // [System.Web.Mvc.Remote("czy_istnieje", "kontoController", HttpMethod = "POST", ErrorMessage = "E-mail został wykorzystywany.")]
-
-        
-
+        [Required]
+        [Display(Name = "Id projektu")]
+        public int id_projekt { get; set; }
+      
         [Required]
         [Display(Name = "Nazwa Projektu")]
         public string nazwa_projektu { get; set; }
@@ -35,14 +25,16 @@ namespace ITgeek.Models
         [Required]
         [Display(Name = "Poziom ukończenia")]
         public int poziom_ukonczenia { get; set; }
-
+        
         [Required]
         [Display(Name = "Użytkownik")]
         public int id_uzytkownik { get; set; }
-      
+          
     }
 
-   
-
-
+    public class Projekty
+    {
+        public Projekt Projekt { get; set; }
+        public Uzytkownik Uzytkownik { get; set; }
+    }
 }

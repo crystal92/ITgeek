@@ -1,5 +1,5 @@
 ﻿<!-- This View uses your Model -->
-@model ITgeek.Models.DodajProjektViewModel
+@model ITgeek.Models.Projekt
 
 
 
@@ -34,7 +34,7 @@
 </head>
 <body>
     <!-- This will automatically post to your Index method (that is decorated with a HttpPost attribute) -->
-    @using (Html.BeginForm("Index", "Projekty", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("DodajProjekt", "Projekty", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
         

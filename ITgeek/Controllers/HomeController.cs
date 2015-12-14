@@ -69,7 +69,7 @@ namespace ITgeek.Controllers
         public ActionResult wyloguj()
         {
             Session.Abandon();
-            return RedirectToAction("Index");
+            return RedirectToAction("Projekty","Projekty");
         }
 
         

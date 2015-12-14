@@ -30,8 +30,13 @@ namespace ITgeek.Models
             public string powtorz_haslo { get; set; }
         }
 
-       public class EdycjaKontaUzytkownika
+       public class Uzytkownik
        {
+
+           [Required]
+           [Display(Name = "Użytkownik")]
+           public int id_uzytkownik { get; set; }
+
            [Required]
            [Display(Name = "Imię")]
            public string imie { get; set; }

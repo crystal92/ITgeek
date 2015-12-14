@@ -106,10 +106,10 @@ namespace ITgeek.Controllers
 
         public ActionResult Edycja()
         {
-
-            string nazwauzytkownika = Session["wyswietlana_nazwa"].ToString();
-            uzytkownik user = db.uzytkownik.FirstOrDefault(u => u.wyswietlana_nazwa.Equals(nazwauzytkownika));
-            EdycjaKontaUzytkownika model = new EdycjaKontaUzytkownika();
+            int id = Int32.Parse(Session["id"].ToString());
+            uzytkownik user = db.uzytkownik.FirstOrDefault(u => u.id_uzytkownik.Equals(id));
+            Uzytkownik model = new Uzytkownik();
+            model.id_uzytkownik = user.id_uzytkownik;
             model.imie = user.imie;
             model.nazwisko = user.nazwisko;
             model.data_urodzenia = user.data_urodzenia;
@@ -122,12 +122,12 @@ namespace ITgeek.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edycja(EdycjaKontaUzytkownika profiluzytkownika)
+        public ActionResult Edycja(Uzytkownik profiluzytkownika)
         {
             if (ModelState.IsValid)
             {
-                string nazwauzytkownika = Session["wyswietlana_nazwa"].ToString();
-                uzytkownik user = db.uzytkownik.FirstOrDefault(u => u.wyswietlana_nazwa.Equals(nazwauzytkownika));
+                int id = Int32.Parse(Session["id"].ToString());
+                uzytkownik user = db.uzytkownik.FirstOrDefault(u => u.id_uzytkownik.Equals(id));
                 user.imie = profiluzytkownika.imie;
                 user.nazwisko = profiluzytkownika.nazwisko;
                 user.data_urodzenia = profiluzytkownika.data_urodzenia;
@@ -139,7 +139,7 @@ namespace ITgeek.Controllers
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 Session["wyswietlana_nazwa"] = user.wyswietlana_nazwa.ToString();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("PoZalogowaniu", "konto");
             }
             return View(profiluzytkownika);
         }

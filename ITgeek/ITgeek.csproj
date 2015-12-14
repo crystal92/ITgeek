@@ -452,10 +452,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Strona1.cshtml" />
     <Content Include="Views\Home\Strona2.cshtml" />
-    <Content Include="Views\konto\Create.cshtml" />
-    <Content Include="Views\konto\Delete.cshtml" />
-    <Content Include="Views\konto\Details.cshtml" />
-    <Content Include="Views\konto\Edit.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\konto\Index.cshtml" />
     <Content Include="Views\konto\Rejestracja.cshtml" />
     <Content Include="Views\konto\Loguj.cshtml" />
@@ -475,7 +475,9 @@
     <Content Include="Views\Projekty\Delete.cshtml" />
     <Content Include="Views\Projekty\Details.cshtml" />
     <Content Include="Views\Projekty\Edit.cshtml" />
-    <Content Include="Views\Projekty\Index.cshtml" />
+    <Content Include="Views\Projekty\DodajProjekt.cshtml" />
+    <Content Include="Views\Projekty\Projekty.cshtml" />
+    <Content Include="Views\Projekty\Wyswietl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

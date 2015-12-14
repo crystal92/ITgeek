@@ -1,9 +1,9 @@
-﻿@model IEnumerable<ITgeek.uzytkownik>
+﻿@model IEnumerable<ITgeek.projekt>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>@ViewBag.Title</h2>
-        <h4>@ViewBag.Message</h4>
+        <h2>@ViewBag.Title = "Lista kont"</h2>
+        
     </div>
 
 
@@ -11,54 +11,22 @@
         <h3>Lista kont:</h3>
 
         <table class="table">
-            <tr>
-                <th>
-                    Imię
-                </th>
-                <th>
-                    Nazwisko
-                </th>
-                <th>
-                    Nazwa
-                </th>
-                <th>
-                   E-mail
-
-                </th>
-                <th>
-                   Hasło
-                </th>
-                
-            </tr>
-
+            
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.imie)
+                        @Html.DisplayFor(modelItem => item.nazwa_projektu)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.nazwisko)
+                        @Html.DisplayFor(modelItem => item.id_uzytkownik)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.wyswietlana_nazwa)
+                        @Html.DisplayFor(modelItem => item.poziom_ukonczenia)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.email)
+                        @Html.DisplayFor(modelItem => item.wstep)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.haslo)
-                    </td>
-                    
-                    <!--
-                    <td>
-                     @Html.ActionLink("Edit", "Edit", new { id = item.id_uzytkownik }) |
-                     @Html.ActionLink("Details", "Details", new { id = item.id_uzytkownik }) |
-                     @Html.ActionLink("Delete", "Delete", new { id = item.id_uzytkownik })
-                    </td>
-                    -->
-
-                
                 </tr>
             }
 

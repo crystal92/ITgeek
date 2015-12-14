@@ -1,0 +1,47 @@
+﻿@model ITgeek.Models.Projekty
+
+
+<div class="col-md-4">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<table class="table">
+    @using (Html.BeginForm())
+    {
+        <tr>
+            <th>
+                Nazwa projektu
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.Projekt.nazwa_projektu)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Autor
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.Uzytkownik.wyswietlana_nazwa)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Poziom ukończenia
+            </th>
+            <td>
+                @Html.DisplayFor(model => model.Projekt.poziom_ukonczenia)%
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Opis
+            </th>
+            <td>
+                @Html.Raw(WebUtility.HtmlDecode(Model.Projekt.wstep))
+            </td>
+        </tr>
+        }
+</table>
+
+
+ 
