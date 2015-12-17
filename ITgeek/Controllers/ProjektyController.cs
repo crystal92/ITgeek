@@ -66,6 +66,8 @@ namespace ITgeek.Controllers
                 model.Projekt = new Projekt();
                 model.Uzytkownik = new Uzytkownik();
                 model.Komentarz = new Komentarz();
+                model.ListaKomentarzy = new List<komentarz>();
+                model.ListaKomentarzy = db.komentarz.Where(k => k.id_projekt == id).ToList();
                 model.Projekt.id_projekt = dane.id_projekt;
                 model.Projekt.id_uzytkownik = dane.id_uzytkownik;
                 model.Projekt.nazwa_projektu = dane.nazwa_projektu;
@@ -95,6 +97,8 @@ namespace ITgeek.Controllers
                 model.Projekt = new Projekt();
                 model.Uzytkownik = new Uzytkownik();
                 model.Komentarz = new Komentarz();
+                model.ListaKomentarzy = new List<komentarz>();
+                model.ListaKomentarzy = db.komentarz.Where(k => k.id_projekt == id).ToList();
                 model.Projekt.id_projekt = dane.id_projekt;
                 model.Projekt.id_uzytkownik = dane.id_uzytkownik;
                 model.Projekt.nazwa_projektu = dane.nazwa_projektu;

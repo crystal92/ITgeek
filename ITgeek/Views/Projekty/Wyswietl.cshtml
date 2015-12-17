@@ -45,3 +45,19 @@
         <input type="submit" value="Dodaj komentarz" />
     </div>
 }
+
+<table class="table">
+    @foreach (var item in Model.ListaKomentarzy)
+    {
+         <tr>
+            <td>
+                @Html.ActionLink(item.uzytkownik.wyswietlana_nazwa, "Profil", "konto", new { id = item.uzytkownik.id_uzytkownik }, null)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tresc_komentarza)
+            </td>
+        </tr>
+    }
+</table>

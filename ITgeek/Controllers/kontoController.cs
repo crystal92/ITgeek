@@ -104,6 +104,24 @@ namespace ITgeek.Controllers
             return View(u);
         }
 
+        [HttpGet]
+        public ActionResult Profil(int id)
+        {
+            uzytkownik user = db.uzytkownik.FirstOrDefault(u => u.id_uzytkownik.Equals(id));
+            Uzytkownik model = new Uzytkownik();
+            model.id_uzytkownik = user.id_uzytkownik;
+            model.imie = user.imie;
+            model.nazwisko = user.nazwisko;
+            model.data_urodzenia = user.data_urodzenia;
+            model.miejscowosc = user.miejscowosc;
+            model.email = user.email;
+            model.wyswietlana_nazwa = user.wyswietlana_nazwa;
+            model.haslo = user.haslo;
+            model.uprawnienia = user.uprawnienia.ToString();
+            return View(model);
+        }
+
+
         public ActionResult Edycja()
         {
             int id = Int32.Parse(Session["id"].ToString());

@@ -480,6 +480,7 @@
     <Content Include="Views\Projekty\Projekty.cshtml" />
     <Content Include="Views\Projekty\Wyswietl.cshtml" />
     <Content Include="Views\Projekty\WyswietlB.cshtml" />
+    <Content Include="Views\konto\Profil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -48,6 +48,6 @@ namespace ITgeek.Models
         public Projekt Projekt { get; set; }
         public Uzytkownik Uzytkownik { get; set; }
         public Komentarz Komentarz { get; set; }
-        
+        public List<komentarz> ListaKomentarzy { get; set; }
     }
 }
