@@ -3,12 +3,11 @@
 @using (Html.BeginForm("Wyswietl", "Projekty", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.Projekt.id_projekt)
+
     <div class="form-group">
         @Html.LabelFor(model => model.Projekt.nazwa_projektu, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(model => model.Projekt.nazwa_projektu)
-            @Html.HiddenFor(model => model.Projekt.nazwa_projektu)
         </div>
     </div>
 
@@ -18,30 +17,20 @@
             @Html.DisplayFor(model => model.Uzytkownik.wyswietlana_nazwa)
         </div>
     </div>
-
-    <div class="form-group">
+    
+     <div class="form-group">
         @Html.LabelFor(model => model.Projekt.poziom_ukonczenia, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DisplayFor(model => model.Projekt.poziom_ukonczenia)
-            @Html.HiddenFor(model => model.Projekt.poziom_ukonczenia)
         </div>
     </div>
 
-    <div class="form-group">
+     <div class="form-group">
         @Html.LabelFor(model => model.Projekt.wstep, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.Raw(WebUtility.HtmlDecode(Model.Projekt.wstep))
-            @Html.HiddenFor(model => model.Projekt.wstep)
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Komentarz.tresc_komentarza, new { @class = "control-label col-md-2" })
-        <div>
-            @Html.TextAreaFor(model => model.Komentarz.tresc_komentarza)
-        </div>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Dodaj komentarz" />
-    </div>
+    
+     
 }

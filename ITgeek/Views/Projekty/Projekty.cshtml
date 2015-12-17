@@ -4,12 +4,17 @@
 <div class="col-md-4">
     <h2>@ViewBag.Title</h2>
 </div>
+
+
+
+
 <table class="table">
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.ActionLink(item.nazwa_projektu, "Wyswietl", "Projekty", new { id = item.id_projekt }, null);
+               
+                @Html.ActionLink(item.nazwa_projektu, "Wyswietl", "Projekty", new {id = item.id_projekt }, null)
             </td>
         </tr>
     }

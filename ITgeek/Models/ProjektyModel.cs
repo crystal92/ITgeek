@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Web.Mvc;
 using System.Collections.Generic;
-using ITgeek.Models;
 
 namespace ITgeek.Models
 {
@@ -16,7 +15,19 @@ namespace ITgeek.Models
         [Required]
         [Display(Name = "Nazwa Projektu")]
         public string nazwa_projektu { get; set; }
+        /*
+        [Required]
+        [Display(Name = "Uwagi")]
+        public string uwagi_problemy { get; set; }
 
+        [Required]
+        [Display(Name = "Rozwinięcie")]
+        public string rozwiniecie { get; set; }
+
+        [Required]
+        [Display(Name = "Zakończenie")]
+        public string zakonczenie { get; set; }
+        */
         [Required]
         [AllowHtml]
         [Display(Name = "Wstęp")]
@@ -36,5 +47,7 @@ namespace ITgeek.Models
     {
         public Projekt Projekt { get; set; }
         public Uzytkownik Uzytkownik { get; set; }
+        public Komentarz Komentarz { get; set; }
+        
     }
 }

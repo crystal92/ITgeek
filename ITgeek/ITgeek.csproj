@@ -203,6 +203,7 @@
     </Compile>
     <Compile Include="Models\kontoModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\KomentarzeModel.cs" />
     <Compile Include="Models\ProjektyModel.cs" />
     <Compile Include="ocena_komentarza.cs">
       <DependentUpon>itgeek.tt</DependentUpon>
@@ -478,6 +479,7 @@
     <Content Include="Views\Projekty\DodajProjekt.cshtml" />
     <Content Include="Views\Projekty\Projekty.cshtml" />
     <Content Include="Views\Projekty\Wyswietl.cshtml" />
+    <Content Include="Views\Projekty\WyswietlB.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
