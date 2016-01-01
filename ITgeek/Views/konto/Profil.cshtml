@@ -1,0 +1,75 @@
+﻿@model ITgeek.Models.Uzytkownik
+
+
+
+<div class="row">
+    
+    <div class="col-md-4">
+        <h2>@ViewBag.Title</h2>
+        <h4>@ViewBag.Message</h4>
+    </div>
+        <h3>Twoje dane:</h3>
+
+        <table class="table">
+            @using (Html.BeginForm())
+            {
+
+                <tr>
+                    <th>
+                        Imię
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.imie)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Nazwisko
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.nazwisko)
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Data urodzenia
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.data_urodzenia)
+                    </td>
+                </tr>   
+                <tr>
+                    <th>
+                        Miejscowość
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.miejscowosc)
+                    </td>        
+                </tr>        
+                <tr>
+                    <th>
+                        Nazwa użytkownika
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.wyswietlana_nazwa)
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        E-mail
+
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.email)
+
+                    </td>
+                </tr>
+                
+            }
+
+        </table>
+
+
+    </div>

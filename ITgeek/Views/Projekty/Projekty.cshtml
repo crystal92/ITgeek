@@ -5,8 +5,14 @@
     <h2>@ViewBag.Title</h2>
 </div>
 
-
-
+@using (Html.BeginForm("Projekty", "Projekty", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+        Kategoria: @Html.DropDownList("kategoria", "-")
+        Szukaj: @Html.TextBox("szukaj") 
+        <input type="submit" value="Szukaj" />
+    </div>
+}
 
 <table class="table">
     @foreach (var item in Model)

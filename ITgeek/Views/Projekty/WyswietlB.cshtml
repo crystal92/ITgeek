@@ -32,8 +32,19 @@
         </div>
     </div>
     
-     
+    
+   <div class="form-group">
+        <div class="col-md-10">
+            @foreach (var item in Model.ListaKategorii)
+            {
+                <div>
+                    @item.nazwa_kategorii
+                </div>
+            }
+        </div>
+    </div>
 }
+
 
 <table class="table">
     @foreach (var item in Model.ListaKomentarzy)

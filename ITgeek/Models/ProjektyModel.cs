@@ -48,6 +48,12 @@ namespace ITgeek.Models
         public Projekt Projekt { get; set; }
         public Uzytkownik Uzytkownik { get; set; }
         public Komentarz Komentarz { get; set; }
+        public Kategoria Kategoria { get; set; }
+       // public List<PozycjaKategorii> kategorie { get; set; }
+        public List<int> ID_kat { get; set; }
+        public PozycjaKategorii PozycjaKategorii { get; set; }
         public List<komentarz> ListaKomentarzy { get; set; }
+        public List<kategoria> ListaKategorii { get; set; }
+        public List<pozycja_kategorii> ListaPozycjiKategorii { get; set; }
     }
 }

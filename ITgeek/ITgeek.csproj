@@ -204,6 +204,9 @@
     <Compile Include="Models\kontoModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KomentarzeModel.cs" />
+    <Compile Include="Models\KategoriaModel.cs" />
+    <Compile Include="Models\PozycjaKategoriiModel.cs" />
+    <Compile Include="Models\OcenaProjektuModel.cs" />
     <Compile Include="Models\ProjektyModel.cs" />
     <Compile Include="ocena_komentarza.cs">
       <DependentUpon>itgeek.tt</DependentUpon>

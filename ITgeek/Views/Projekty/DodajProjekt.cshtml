@@ -1,5 +1,5 @@
 ﻿<!-- This View uses your Model -->
-@model ITgeek.Models.Projekt
+@model ITgeek.Models.Projekty
 
 
 
@@ -39,18 +39,24 @@
         @Html.AntiForgeryToken()
         
         <div class="form-group">
-            @Html.LabelFor(model => model.nazwa_projektu, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.nazwa_projektu)
-                @Html.ValidationMessageFor(model => model.nazwa_projektu)
+                @Html.ListBoxFor(m => m.ID_kat, ViewBag.kategoriaa as SelectList, "-")
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Projekt.nazwa_projektu, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Projekt.nazwa_projektu)
+                @Html.ValidationMessageFor(model => model.Projekt.nazwa_projektu)
             </div>
         </div> 
         
         <div class="form-group">
-            @Html.LabelFor(model => model.poziom_ukonczenia, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Projekt.poziom_ukonczenia, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.poziom_ukonczenia)
-                @Html.ValidationMessageFor(model => model.poziom_ukonczenia)
+                @Html.EditorFor(model => model.Projekt.poziom_ukonczenia)
+                @Html.ValidationMessageFor(model => model.Projekt.poziom_ukonczenia)
             </div>
         </div>
         
@@ -60,7 +66,7 @@
       
         <div>
             <!-- This will contain your HtmlContent and use the TinyMCE editor-->
-            @Html.TextAreaFor(model => model.wstep)
+            @Html.TextAreaFor(model => model.Projekt.wstep)
 
            
         </div>
