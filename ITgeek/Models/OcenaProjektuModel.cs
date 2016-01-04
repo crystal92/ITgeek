@@ -22,7 +22,7 @@ namespace ITgeek.Models
         public int ocena_projektu1 { get; set; }
         
         [Required]
-        [Display(Name = "Użytkownik")]
+        [Display(Name = "Id Użytkownik")]
         public int id_uzytkownik { get; set; }
           
     }

@@ -34,6 +34,14 @@
             @Html.HiddenFor(model => model.Projekt.wstep)
         </div>
     </div>
+    
+     <div class="form-group">
+        @Html.LabelFor(model => model.ocena, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.ocena)
+            @Html.HiddenFor(model => model.ocena)
+        </div>
+    </div>
 
     <div class="form-group">
         <div class="col-md-10">
@@ -53,8 +61,13 @@
             @Html.TextAreaFor(model => model.Komentarz.tresc_komentarza)
         </div>
     </div>
+    
     <div class="form-group">
-        <input type="submit" value="Dodaj komentarz" />
+        <input type="submit" name="przycisk" value="komentuj" />
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" name="przycisk" value="plusuj" />
     </div>
     
     

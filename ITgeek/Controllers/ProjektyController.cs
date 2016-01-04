@@ -63,17 +63,6 @@ namespace ITgeek.Controllers
                     db.SaveChanges();
                     ++jj;
                 }
-                /*
-                int ii = 0;
-                foreach(var item in dane.kategorie)
-                {
-                    nowa_pozycja.id_kategoria = dane.kategorie[ii].id_kategoria;
-                    nowa_pozycja.id_projekt = nowy_projekt.id_projekt;
-                    db.pozycja_kategorii.Add(nowa_pozycja);
-                    db.SaveChanges();
-                    ++ii;
-                }
-                */
                 return RedirectToAction("DodajProjekt", "Projekty"); 
             }
             return View(dane);
@@ -181,6 +170,8 @@ namespace ITgeek.Controllers
                 model.Uzytkownik.data_urodzenia = user.data_urodzenia;
                 model.Uzytkownik.haslo = user.haslo;
                 model.Uzytkownik.wyswietlana_nazwa = user.wyswietlana_nazwa;
+
+                model.ocena = (db.ocena_projektu.Where(p => p.id_projekt.Equals(id))).Count();
                 return View(model);
             }
             else
@@ -225,24 +216,51 @@ namespace ITgeek.Controllers
                 model.Uzytkownik.data_urodzenia = user.data_urodzenia;
                 model.Uzytkownik.haslo = user.haslo;
                 model.Uzytkownik.wyswietlana_nazwa = user.wyswietlana_nazwa;
+
+                model.ocena = (db.ocena_projektu.Where(p => p.id_projekt.Equals(id))).Count();
                 return View("WyswietlB", model);
             }
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Wyswietl(Projekty dane)
+        public ActionResult Wyswietl(Projekty dane, string przycisk)
         {
-            if (ModelState.IsValid)
-            {
-                komentarz koment = new komentarz();
-                koment.id_projekt = dane.Projekt.id_projekt;
-                koment.id_uzytkownik = Int32.Parse(Session["ID"].ToString());
-                koment.tresc_komentarza = dane.Komentarz.tresc_komentarza;
-                db.komentarz.Add(koment);
-                db.SaveChanges();
-                return RedirectToAction("Wyswietl");
-            }
+                switch(przycisk)
+                {
+                    case "komentuj":
+                        if (ModelState.IsValid)
+                        {
+                            komentarz koment = new komentarz();
+                            koment.id_projekt = dane.Projekt.id_projekt;
+                            koment.id_uzytkownik = Int32.Parse(Session["ID"].ToString());
+                            koment.tresc_komentarza = dane.Komentarz.tresc_komentarza;
+                            db.komentarz.Add(koment);
+                            db.SaveChanges();
+                            return RedirectToAction("Wyswietl", dane.Projekt.id_projekt);
+                         }
+                        else
+                            return RedirectToAction("Wyswietl", dane.Projekt.id_projekt);
+                    
+                    case "plusuj":
+                        if (ModelState.IsValidField("id_projekt"))
+                        {
+                            ocena_projektu ocena = new ocena_projektu();
+                            ocena.id_projekt = dane.Projekt.id_projekt;
+                            ocena.id_uzytkownik = Int32.Parse(Session["ID"].ToString());
+                            ocena.ocena_projektu1 = 1;
+                            var lista = db.ocena_projektu.Where(p => p.id_projekt.Equals(dane.Projekt.id_projekt));
+                            lista = lista.Where(u => u.id_uzytkownik.Equals(ocena.id_uzytkownik));
+                            if (!lista.Any())
+                            {
+                                db.ocena_projektu.Add(ocena);
+                                db.SaveChanges();
+                            }
+                            return RedirectToAction("Wyswietl", dane.Projekt.id_projekt);
+                        }
+                        else
+                            return RedirectToAction("Wyswietl", dane.Projekt.id_projekt);
+                }
             return View(dane);
         }
     }

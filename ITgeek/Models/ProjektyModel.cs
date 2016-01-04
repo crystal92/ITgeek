@@ -49,11 +49,14 @@ namespace ITgeek.Models
         public Uzytkownik Uzytkownik { get; set; }
         public Komentarz Komentarz { get; set; }
         public Kategoria Kategoria { get; set; }
+        //public OcenaProjektu OcenaProjektu { get; set; }
        // public List<PozycjaKategorii> kategorie { get; set; }
         public List<int> ID_kat { get; set; }
         public PozycjaKategorii PozycjaKategorii { get; set; }
         public List<komentarz> ListaKomentarzy { get; set; }
         public List<kategoria> ListaKategorii { get; set; }
         public List<pozycja_kategorii> ListaPozycjiKategorii { get; set; }
+        public List<projekt> ListaProjektow { get; set; }
+        public int ocena { get; set; }
     }
 }
