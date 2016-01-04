@@ -42,7 +42,8 @@ namespace ITgeek.Controllers
                     return RedirectToAction("PoZalogowaniu");
                     ;
                 }
-
+                else
+                    return View();
             }
             return View(u);
         }
