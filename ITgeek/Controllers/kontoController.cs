@@ -39,8 +39,10 @@ namespace ITgeek.Controllers
 
                     Session["id"] = v.id_uzytkownik.ToString();
                     Session["wyswietlana_nazwa"] = v.wyswietlana_nazwa.ToString();
-                    return RedirectToAction("PoZalogowaniu");
-                    ;
+
+
+                    return RedirectToAction("Profil", new { id = Int32.Parse(Session["id"].ToString()) });
+
                 }
                 else
                     return View();
@@ -48,20 +50,7 @@ namespace ITgeek.Controllers
             return View(u);
         }
 
-        public ActionResult PoZalogowaniu()
-        {
-            if (Session["id"] != null)
-            {
 
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-
-            // return View();
-        }
 
 
         // GET: /konto/Rejestracja
@@ -109,16 +98,20 @@ namespace ITgeek.Controllers
         public ActionResult Profil(int id)
         {
             uzytkownik user = db.uzytkownik.FirstOrDefault(u => u.id_uzytkownik.Equals(id));
-            Uzytkownik model = new Uzytkownik();
-            model.id_uzytkownik = user.id_uzytkownik;
-            model.imie = user.imie;
-            model.nazwisko = user.nazwisko;
-            model.data_urodzenia = user.data_urodzenia;
-            model.miejscowosc = user.miejscowosc;
-            model.email = user.email;
-            model.wyswietlana_nazwa = user.wyswietlana_nazwa;
-            model.haslo = user.haslo;
-            model.uprawnienia = user.uprawnienia.ToString();
+            Projekty model = new Projekty();
+            model.Uzytkownik = new Uzytkownik();
+            model.Uzytkownik.id_uzytkownik = user.id_uzytkownik;
+            model.Uzytkownik.imie = user.imie;
+
+
+            model.Uzytkownik.miejscowosc = user.miejscowosc;
+            model.Uzytkownik.email = user.email;
+            model.Uzytkownik.wyswietlana_nazwa = user.wyswietlana_nazwa;
+
+            model.ListaProjektow = new List<projekt>();
+            model.ListaProjektow = db.projekt.Where(k => k.id_uzytkownik == id).ToList();
+
+
             return View(model);
         }
 

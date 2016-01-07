@@ -545,8 +545,10 @@
           <NavigationProperty Name="projekt" Relationship="Self.fk_zdjecia_projekt1" FromRole="zdjecia" ToRole="projekt" />
         </EntityType>
         <Association Name="fk_pozycja_kategorii_kategoria1">
-          <End Role="kategoria" Type="Self.kategoria" Multiplicity="1" />
-          <End Role="pozycja_kategorii" Type="Self.pozycja_kategorii" Multiplicity="*" />
+          <End Role="kategoria" Type="Self.kategoria" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pozycja_kategorii" Type="Self.pozycja_kategorii" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="kategoria">
               <PropertyRef Name="id_kategoria" />
@@ -557,8 +559,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_komentarz_projekt1">
-          <End Role="projekt" Type="Self.projekt" Multiplicity="0..1" />
-          <End Role="komentarz" Type="Self.komentarz" Multiplicity="*" />
+          <End Role="projekt" Type="Self.projekt" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="*" >
+          </End>
           <ReferentialConstraint>
             <Principal Role="projekt">
               <PropertyRef Name="id_projekt" />
@@ -569,8 +574,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_komentarz_urzytkownik1">
-          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
-          <End Role="komentarz" Type="Self.komentarz" Multiplicity="*" />
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="uzytkownik">
               <PropertyRef Name="id_uzytkownik" />
@@ -581,7 +588,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ocena_komentarza_komentarz1">
-          <End Role="komentarz" Type="Self.komentarz" Multiplicity="1" />
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ocena_komentarza" Type="Self.ocena_komentarza" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="komentarz">
@@ -593,8 +602,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_podkomentarz_komentarz1">
-          <End Role="komentarz" Type="Self.komentarz" Multiplicity="1" />
-          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="*" />
+          <End Role="komentarz" Type="Self.komentarz" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="komentarz">
               <PropertyRef Name="id_komentarz" />
@@ -605,8 +616,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ocena_komentarza_urzytkownik1">
-          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
-          <End Role="ocena_komentarza" Type="Self.ocena_komentarza" Multiplicity="*" />
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ocena_komentarza" Type="Self.ocena_komentarza" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="uzytkownik">
               <PropertyRef Name="id_uzytkownik" />
@@ -617,7 +630,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ocena_podkomentarza_podkomentarz1">
-          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="1" />
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ocena_podkomentarza" Type="Self.ocena_podkomentarza" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="podkomentarz">
@@ -629,8 +644,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ocena_podkomentarza_urzytkownik1">
-          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
-          <End Role="ocena_podkomentarza" Type="Self.ocena_podkomentarza" Multiplicity="*" />
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ocena_podkomentarza" Type="Self.ocena_podkomentarza" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="uzytkownik">
               <PropertyRef Name="id_uzytkownik" />
@@ -641,8 +658,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ocena_projektu_projekt1">
-          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
-          <End Role="ocena_projektu" Type="Self.ocena_projektu" Multiplicity="*" />
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ocena_projektu" Type="Self.ocena_projektu" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="projekt">
               <PropertyRef Name="id_projekt" />
@@ -653,8 +672,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ocena_projektu_urzytkownik">
-          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
-          <End Role="ocena_projektu" Type="Self.ocena_projektu" Multiplicity="*" />
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ocena_projektu" Type="Self.ocena_projektu" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="uzytkownik">
               <PropertyRef Name="id_uzytkownik" />
@@ -665,8 +686,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_pliki_projekt1">
-          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
-          <End Role="pliki" Type="Self.pliki" Multiplicity="*" />
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pliki" Type="Self.pliki" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="projekt">
               <PropertyRef Name="id_projekt" />
@@ -677,8 +700,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_podkomentarz_urzytkownik1">
-          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
-          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="*" />
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="podkomentarz" Type="Self.podkomentarz" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="uzytkownik">
               <PropertyRef Name="id_uzytkownik" />
@@ -689,8 +714,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_pozycja_kategorii_projekt1">
-          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
-          <End Role="pozycja_kategorii" Type="Self.pozycja_kategorii" Multiplicity="*" />
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="pozycja_kategorii" Type="Self.pozycja_kategorii" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="projekt">
               <PropertyRef Name="id_projekt" />
@@ -701,8 +728,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_projekt_urzytkownik1">
-          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" />
-          <End Role="projekt" Type="Self.projekt" Multiplicity="*" />
+          <End Role="uzytkownik" Type="Self.uzytkownik" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="projekt" Type="Self.projekt" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="uzytkownik">
               <PropertyRef Name="id_uzytkownik" />
@@ -713,8 +742,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_wideo_projekt1">
-          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
-          <End Role="wideo" Type="Self.wideo" Multiplicity="*" />
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="wideo" Type="Self.wideo" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="projekt">
               <PropertyRef Name="id_projekt" />
@@ -725,8 +756,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_zdjecia_projekt1">
-          <End Role="projekt" Type="Self.projekt" Multiplicity="1" />
-          <End Role="zdjecia" Type="Self.zdjecia" Multiplicity="*" />
+          <End Role="projekt" Type="Self.projekt" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="zdjecia" Type="Self.zdjecia" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="projekt">
               <PropertyRef Name="id_projekt" />

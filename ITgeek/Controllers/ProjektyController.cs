@@ -226,6 +226,8 @@ namespace ITgeek.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Wyswietl(Projekty dane, string przycisk)
         {
+           int id_actual_user =  Int32.Parse(Session["id"].ToString());
+
                 switch(przycisk)
                 {
                     case "komentuj":
@@ -260,6 +262,44 @@ namespace ITgeek.Controllers
                         }
                         else
                             return RedirectToAction("Wyswietl", dane.Projekt.id_projekt);
+                    case "usun":
+                        if (ModelState.IsValidField("id_projekt"))
+                        {
+                            int id = dane.Projekt.id_projekt;
+                            projekt projekt = db.projekt
+                                .Include(i=>i.komentarz)
+                                .Include(i=>i.ocena_projektu)
+                                .Include(i=>i.pozycja_kategorii)
+                                .Where(i=>i.id_projekt==id)
+                                .SingleOrDefault();
+                                                       
+                             db.projekt.Remove(projekt);
+                             db.SaveChanges();
+
+                            return RedirectToAction("Profil","konto", new { id = Int32.Parse(Session["id"].ToString()) });
+                        }
+                        else
+                        {
+                            return RedirectToAction("Wyswietl", dane.Projekt.id_projekt); 
+                        }
+                    case "usun_komentarz":
+                        if (ModelState.IsValidField("id_projekt"))
+                        {
+                            int id = dane.Projekt.id_projekt;
+                            komentarz komentarz = db.komentarz
+                                .Where(i => i.id_projekt == id && i.id_uzytkownik == id_actual_user)
+                                .FirstOrDefault();
+
+                            db.komentarz.Remove(komentarz);
+                            db.SaveChanges();
+
+                            return RedirectToAction("Wyswietl", dane.Projekt.id_projekt);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Wyswietl", dane.Projekt.id_projekt);
+                        }
+
                 }
             return View(dane);
         }

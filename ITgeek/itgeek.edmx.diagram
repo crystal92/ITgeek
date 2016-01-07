@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="itgeekModel.pliki" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="itgeekModel.podkomentarz" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="itgeekModel.pozycja_kategorii" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="itgeekModel.projekt" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="itgeekModel.projekt" Width="1.5" PointX="1" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="itgeekModel.uzytkownik" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="itgeekModel.wideo" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
         <EntityTypeShape EntityType="itgeekModel.zdjecia" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />

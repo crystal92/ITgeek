@@ -1,50 +1,64 @@
-﻿@model ITgeek.Models.Uzytkownik
+﻿@model ITgeek.Models.Projekty
 
 
 
 <div class="row">
-    
+
     <div class="col-md-4">
         <h2>@ViewBag.Title</h2>
         <h4>@ViewBag.Message</h4>
     </div>
-        <h3>Profil użytkownika:</h3>
+    <h3>Profil użytkownika:</h3>
 
-        <table class="table">
-            @using (Html.BeginForm())
-            {
+    <table class="table">
+        @using (Html.BeginForm())
+        {
 
-                <tr>
-                    <th>
-                        Imię
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.imie)
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        Nazwa użytkownika
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.wyswietlana_nazwa)
+            <tr>
+                <th>
+                    Imię
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Uzytkownik.imie)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Nazwa użytkownika
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Uzytkownik.wyswietlana_nazwa)
 
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        E-mail
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    E-mail
 
-                    </th>
-                    <td>
-                        @Html.DisplayFor(model => model.email)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Uzytkownik.email)
 
-                    </td>
-                </tr>
-                
-            }
-
-        </table>
+                </td>
+            </tr>
 
 
-    </div>
+
+        }
+
+    </table>
+    @foreach (var item in Model.ListaProjektow)
+    {<table>
+        <tr>
+            <td>
+                @Html.ActionLink(item.nazwa_projektu, "Wyswietl", "Projekty", new { id = item.id_projekt }, null)
+
+
+
+            </td>
+        </tr>
+    </table>
+
+    }
+
+</div>
