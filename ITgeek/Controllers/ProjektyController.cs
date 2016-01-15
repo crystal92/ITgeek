@@ -125,15 +125,18 @@ namespace ITgeek.Controllers
             return View(projekty);
         }
 
-
+        
         [HttpGet]
         [ActionName("Wyswietl_usun")]
-        public ActionResult Wyswietl(int id, int id_komentarz)
-        {
+        public ActionResult Wyswietl(int id,int id_komentarz)
+        {   
+           
+            
             if (Session["ID"] != null)
             {
-                
-                
+
+                  
+                    
                 if (id_komentarz != 0)
                 {
 
@@ -142,26 +145,37 @@ namespace ITgeek.Controllers
                     db.komentarz.Remove(komentarz);
                     db.SaveChanges();
 
-                    System.Diagnostics.Debug.WriteLine("ID: " + id.ToString());
-
-                    return RedirectToAction("Wyswietl", id);
-
+                    return RedirectToAction("Wyswietl", new { id = id });
+                 
                 }
-                return View();
+                return RedirectToAction("Wyswietl", new { id = id });
             }
             else
-            return View();
+                return RedirectToAction("Wyswietl", new { id = id });
         
         }
-
+        
         [HttpGet]
         [ActionName("Wyswietl")]
         public ActionResult Wyswietl(int id)
         {
             if (Session["ID"] != null)
             {
-                
+               /* if (id_komentarz != 0)
+                {
 
+                    komentarz komentarz = db.komentarz.FirstOrDefault(d => d.id_komentarz.Equals(id_komentarz));
+
+                    db.komentarz.Remove(komentarz);
+                    db.SaveChanges();
+
+                    System.Diagnostics.Debug.WriteLine("ID: " + id.ToString());
+                    System.Diagnostics.Debug.WriteLine("IDa: " + id_komentarz.ToString());
+
+                    //return RedirectToAction("Wyswietl", id);
+
+                }
+                */
 
                 ViewBag.Title = "Projekt";
                 Projekty model = new Projekty();

@@ -15,11 +15,11 @@ namespace ITgeek
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Projekty", action = "Projekty", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}/{id_komentarz}",
+                defaults: new { controller = "Projekty", action = "Projekty", id = UrlParameter.Optional, id_komentarz = UrlParameter.Optional }
             );
 
-
+            
       
         }
     }
