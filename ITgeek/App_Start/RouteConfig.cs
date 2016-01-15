@@ -18,6 +18,9 @@ namespace ITgeek
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Projekty", action = "Projekty", id = UrlParameter.Optional }
             );
+
+
+      
         }
     }
 }

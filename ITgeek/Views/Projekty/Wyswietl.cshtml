@@ -1,5 +1,4 @@
-﻿widok wyswietl:
-
+﻿
 @model ITgeek.Models.Projekty
 
 @using (Html.BeginForm("Wyswietl", "Projekty", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -85,7 +84,7 @@
         </div>
     }
 
-
+    }
 
 
 <table class="table">
@@ -98,17 +97,23 @@
             </td>
         </tr>
         <tr>
+           <td>@Html.DisplayFor(modelItem => item.tresc_komentarza)
+</td>
             <td>
-                @Html.DisplayFor(modelItem => item.tresc_komentarza)
-            </td>
-            <td>
-                @if (Session["id"].ToString() == Model.Projekt.id_uzytkownik.ToString())
+                @if (item.id_uzytkownik == Model.Uzytkownik.id_uzytkownik)
                 {
-                    <input type="submit" name="przycisk" value="usun_komentarz" />
+                    //<input type="submit" name="przycisk" value="usun_komentarz"/>
+                     @Html.ActionLink("usuń", "Wyswietl_usun", "Projekty", new {id=item.id_projekt,id_komentarz = item.id_komentarz }, null)
+                
+                
+                     @Html.HiddenFor(model => model.Komentarz.id_komentarz, item.id_komentarz);
+
+
                 }
+                           
+
             </td>
         </tr>
     }
 </table>
     
-}

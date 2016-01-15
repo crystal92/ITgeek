@@ -125,11 +125,44 @@ namespace ITgeek.Controllers
             return View(projekty);
         }
 
+
         [HttpGet]
+        [ActionName("Wyswietl_usun")]
+        public ActionResult Wyswietl(int id, int id_komentarz)
+        {
+            if (Session["ID"] != null)
+            {
+                
+                
+                if (id_komentarz != 0)
+                {
+
+                    komentarz komentarz = db.komentarz.FirstOrDefault(d => d.id_komentarz.Equals(id_komentarz));
+
+                    db.komentarz.Remove(komentarz);
+                    db.SaveChanges();
+
+                    System.Diagnostics.Debug.WriteLine("ID: " + id.ToString());
+
+                    return RedirectToAction("Wyswietl", id);
+
+                }
+                return View();
+            }
+            else
+            return View();
+        
+        }
+
+        [HttpGet]
+        [ActionName("Wyswietl")]
         public ActionResult Wyswietl(int id)
         {
             if (Session["ID"] != null)
             {
+                
+
+
                 ViewBag.Title = "Projekt";
                 Projekty model = new Projekty();
                 projekt dane = db.projekt.FirstOrDefault(d => d.id_projekt.Equals(id));
@@ -140,6 +173,8 @@ namespace ITgeek.Controllers
                 model.ListaKomentarzy = db.komentarz.Where(k => k.id_projekt == id).ToList();
                 model.ListaKategorii = new List<kategoria>();
                 model.ListaPozycjiKategorii = new List<pozycja_kategorii>();
+
+                model.Uzytkownik.id_uzytkownik = Int32.Parse(Session["ID"].ToString());
 
                 var ids = db.pozycja_kategorii.Where(pk => pk.id_projekt.Equals(id)).ToList();
                 model.ListaPozycjiKategorii = ids;
@@ -172,6 +207,9 @@ namespace ITgeek.Controllers
                 model.Uzytkownik.wyswietlana_nazwa = user.wyswietlana_nazwa;
 
                 model.ocena = (db.ocena_projektu.Where(p => p.id_projekt.Equals(id))).Count();
+
+                
+
                 return View(model);
             }
             else
@@ -283,6 +321,7 @@ namespace ITgeek.Controllers
                             return RedirectToAction("Wyswietl", dane.Projekt.id_projekt); 
                         }
                     case "usun_komentarz":
+                        System.Diagnostics.Debug.WriteLine(dane.Komentarz.id_komentarz.ToString());
                         if (ModelState.IsValidField("id_projekt"))
                         {
                             int id = dane.Projekt.id_projekt;
